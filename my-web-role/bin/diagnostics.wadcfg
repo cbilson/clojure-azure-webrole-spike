@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DiagnosticMonitoringConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"
+                                   configurationChangePollInterval="PT1M"
+                                   overallQuotaInMB="4096">
+  <DiagnosticInfrastructureLogs bufferQuotaInMB="0" scheduledTransferLogLevelFilter="Verbose" scheduledTransferPeriod="PT30M"/>
+
+  <Directories bufferQuotaInMB="0">
+    <DataSources>
+      <DirectoryConfiguration container="logs" directoryQuotaInMB="1024">
+        <LocalResource name="logs" relativePath="."/>
+      </DirectoryConfiguration>
+    </DataSources>
+  </Directories>
+</DiagnosticMonitoringConfiguration>
