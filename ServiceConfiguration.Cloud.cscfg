@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" serviceName="cbilson-MyService" osFamily="4" osVersion="*" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+  <Role name="my-web-role">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointProtocol=https;AccountName=cbilsonwestuslog;AccountKey=YInjI4aPDKn95KjNNaa4smZTRyA2FO8GlbX6F7HeT7J2TRakklwXoAS4W3lKSccPUOhJ7w8qljA4lM9WDOcnUw==" />
+      <Setting name="JavaHome" value="D:\Program Files\Zulu\8.1.0.6" />
+      <Setting name="JavaCmd" value="D:\Program Files\Zulu\8.1.0.6\bin\java.exe" />
+    </ConfigurationSettings>
+    <Instances count="1" />
+    <Certificates />
+  </Role>
+</ServiceConfiguration>

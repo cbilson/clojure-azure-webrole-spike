@@ -1,0 +1,8 @@
+local_package.csx
+cloud_package.cspkg
+my-web-role/bin/*-standalone.jar
+my-web-role/setup.txt
+my-web-role/installer.txt
+my-web-role/startup.txt
+DFTemp
+DevelopmentFabric.log

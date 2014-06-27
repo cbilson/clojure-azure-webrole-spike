@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="cbilson-MyService" schemaVersion="2014-01.2.3" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="my-web-role" vmsize="ExtraSmall">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <Startup>
+      <Task commandLine="setup.cmd" executionContext="elevated">
+        <Environment>
+          <Variable name="EMULATED">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+          <Variable name="RUNTIME_VENDOR" value="Azul Systems, Inc." />
+          <Variable name="RUNTIME_PRODUCT_NAME" value="Zulu 8.1.0.6 (64-bit)" />
+          <Variable name="RUNTIME_PRODUCT_VERSION" value="8.1.0.6" />
+          <Variable name="RUNTIME_INSTALLER" value="http://downloads.azulsystems.com/request.php?file=zulu1.8.0_05-8.1.0.6-win64.msi" />
+          <Variable name="RUNTIME_INSTALLER_FILENAME" value="zulu1.8.0_05-8.1.0.6-win64.msi" />
+          <Variable name="RUNTIME_INSTALLER_CHECKSUM" value="730c347461955f055e1410d6c41f7b6d" />
+          <Variable name="HTTP_REQUEST_HEADERS" value="Referer: http://www.azulsystems.com/products/zulu/downloads#Windows\\nAccept: *" />
+        </Environment>
+      </Task>
+      <Task commandLine="startup.cmd" taskType="background">
+        <Environment>
+          <Variable name="JAVA_CMD">
+            <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='JavaCmd']/@value" />
+          </Variable>
+          <Variable name="JAVA_HOME">
+            <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='JavaHome']/@value" />
+          </Variable>
+          <Variable name="APPLICATION" value="my-web-role-0.1.0-SNAPSHOT-standalone.jar" />
+          <Variable name="PORT" value="80" />
+        </Environment>
+      </Task>
+    </Startup>
+    <LocalResources>
+      <LocalStorage name="DiagnosticStore" sizeInMB="8192" />
+    </LocalResources>
+    <ConfigurationSettings>
+      <Setting name="JavaCmd" />
+      <Setting name="JavaHome" />
+    </ConfigurationSettings>
+    <Endpoints>
+      <InputEndpoint name="AppEndPoint" protocol="http" port="80" />
+      <InputEndpoint name="LogEndpoint" protocol="http" port="8000" />
+    </Endpoints>
+    <Sites>
+      <Site name="logs">
+        <Bindings>
+          <Binding name="LogEndpoint" endpointName="LogEndpoint" />
+        </Bindings>
+      </Site>
+    </Sites>
+  </WebRole>
+</ServiceDefinition>

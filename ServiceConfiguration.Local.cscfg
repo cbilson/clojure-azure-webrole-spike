@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" serviceName="cbilson-MyService" osFamily="2" osVersion="*" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+  <Role name="my-web-role">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="JavaHome" value="C:\Program Files\Zulu\8.1.0.6" />
+      <Setting name="JavaCmd" value="C:\Program Files\Zulu\8.1.0.6\bin\java.exe" />
+    </ConfigurationSettings>
+    <Instances count="1" />
+    <Certificates />
+  </Role>
+</ServiceConfiguration>
